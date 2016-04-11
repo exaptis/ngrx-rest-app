@@ -10,7 +10,7 @@ import {AppStore} from "./interfaces/AppStoreInterface";
 @Component({
     selector: 'my-app',
     providers: [],
-    templateUrl: require('./App.html'),
+    template: require('./App.html'),
     directives: [ItemList, ItemDetail],
     changeDetection: ChangeDetectionStrategy.OnPush
 })

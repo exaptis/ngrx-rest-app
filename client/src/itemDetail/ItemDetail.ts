@@ -3,7 +3,7 @@ import {Item} from "../interfaces/ItemInterface";
 
 @Component({
     selector: 'item-detail',
-    templateUrl: require('./ItemDetail.html')
+    template: require('./ItemDetail.html')
 })
 export class ItemDetail {
     originalName: string;

@@ -3,7 +3,7 @@ import {Item} from "../interfaces/ItemInterface";
 
 @Component({
     selector: 'items-list',
-    templateUrl: require('./ItemsList.html')
+    template: require('./ItemsList.html')
 })
 export class ItemList {
     @Input() items: Item[];
