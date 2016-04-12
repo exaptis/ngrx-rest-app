@@ -6,7 +6,10 @@ import {Item} from "../interfaces/ItemInterface";
     template: require('./ItemsList.html')
 })
 export class ItemList {
-    @Input() items: Item[];
-    @Output() selected = new EventEmitter();
-    @Output() deleted = new EventEmitter();
+    @Input()
+    items: Item[];
+    @Output()
+    selected = new EventEmitter();
+    @Output()
+    deleted = new EventEmitter();
 }

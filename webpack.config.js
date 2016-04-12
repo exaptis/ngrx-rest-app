@@ -29,11 +29,11 @@ module.exports = {
 
   resolve: {
     // ensure loader extensions match
-    extensions: ['','.ts','.js','.json', '.css', '.html']
+    extensions: ['', '.ts', '.js', '.json', '.css', '.html']
   },
 
   module: {
-    preLoaders: [ { test: /\.ts$/, loader: 'tslint-loader' } ],
+    preLoaders: [{test: /\.ts$/, loader: 'tslint-loader'}],
     loaders: [
       // Support for .ts files.
       {
@@ -47,24 +47,24 @@ module.exports = {
             2375  // 2375 -> Duplicate string index signature
           ]
         },
-        exclude: [ /\.spec\.ts$/, /node_modules/ ]
+        exclude: [/\.spec\.ts$/, /node_modules/]
       },
 
       // Support for *.json files.
-      { test: /\.json$/,  loader: 'json-loader' },
+      {test: /\.json$/, loader: 'json-loader'},
 
       // Support for CSS as raw text
-      { test: /\.css$/,   loader: 'raw-loader' },
+      {test: /\.css$/, loader: 'raw-loader'},
 
       // support for .html as raw text
-      { test: /\.html$/,  loader: 'raw-loader' },
+      {test: /\.html$/, loader: 'raw-loader'},
     ],
-    noParse: [ /zone\.js\/dist\/.+/, /angular2\/bundles\/.+/ ]
+    noParse: [/zone\.js\/dist\/.+/, /angular2\/bundles\/.+/]
   },
 
   plugins: [
-    new CommonsChunkPlugin({ name: 'vendor', filename: 'vendor.js', minChunks: Infinity }),
-    new CommonsChunkPlugin({ name: 'common', filename: 'common.js', minChunks: 2, chunks: ['app', 'vendor'] })
+    new CommonsChunkPlugin({name: 'vendor', filename: 'vendor.js', minChunks: Infinity}),
+    new CommonsChunkPlugin({name: 'common', filename: 'common.js', minChunks: 2, chunks: ['app', 'vendor']})
   ],
 
   // Other module loader config

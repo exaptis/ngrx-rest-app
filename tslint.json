@@ -32,10 +32,6 @@
       "check-else",
       "check-whitespace"
     ],
-    "quotemark": [
-      true,
-      "single"
-    ],
     "semicolon": true,
     "trailing-comma": true,
     "triple-equals": [

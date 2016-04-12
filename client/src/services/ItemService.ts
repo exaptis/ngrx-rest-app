@@ -1,12 +1,12 @@
 import {Injectable} from "angular2/core";
-import {Store} from '@ngrx/store';
+import {Store} from "@ngrx/store";
 import {Observable} from "rxjs/Observable";
 import {Item} from "./../interfaces/ItemInterface";
 import {Http, Headers} from "angular2/http";
 import {AppStore} from "../interfaces/AppStoreInterface";
 
 const BASE_URL = 'http://localhost:3000/items/';
-const HEADER = { headers: new Headers({ 'Content-Type': 'application/json' }) };
+const HEADER = {headers: new Headers({'Content-Type': 'application/json'})};
 
 @Injectable()
 export class ItemsService {
@@ -19,7 +19,7 @@ export class ItemsService {
     loadItems() {
         this.http.get(BASE_URL)
             .map(res => res.json())
-            .map(payload => ({ type: 'ADD_ITEMS', payload }))
+            .map(payload => ({type: 'ADD_ITEMS', payload}))
             .subscribe(action => this.store.dispatch(action));
     }
 
@@ -30,17 +30,17 @@ export class ItemsService {
     createItem(item: Item) {
         this.http.post(`${BASE_URL}`, JSON.stringify(item), HEADER)
             .map(res => res.json())
-            .map(payload => ({ type: 'CREATE_ITEM', payload }))
+            .map(payload => ({type: 'CREATE_ITEM', payload}))
             .subscribe(action => this.store.dispatch(action));
     }
 
     updateItem(item: Item) {
         this.http.put(`${BASE_URL}${item.id}`, JSON.stringify(item), HEADER)
-            .subscribe(action => this.store.dispatch({ type: 'UPDATE_ITEM', payload: item }));
+            .subscribe(action => this.store.dispatch({type: 'UPDATE_ITEM', payload: item}));
     }
 
     deleteItem(item: Item) {
         this.http.delete(`${BASE_URL}${item.id}`)
-            .subscribe(action => this.store.dispatch({ type: 'DELETE_ITEM', payload: item }));
+            .subscribe(action => this.store.dispatch({type: 'DELETE_ITEM', payload: item}));
     }
 }

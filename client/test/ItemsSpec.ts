@@ -1,6 +1,6 @@
 import {selectedItem} from "../src/stores/SelectedItemStore";
 import {items} from "../src/stores/ItemsStore";
-import {it, describe, expect} from 'angular2/testing';
+import {it, describe, expect} from "angular2/testing";
 
 describe('Items', () => {
     describe('`selectedItem` store', () => {

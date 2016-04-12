@@ -9,11 +9,14 @@ export class ItemDetail {
     originalName: string;
     selectedItem: Item;
 
-    @Input('item') _item: Item;
-    @Output() saved = new EventEmitter();
-    @Output() cancelled = new EventEmitter();
+    @Input('item')
+    _item: Item;
+    @Output()
+    saved = new EventEmitter();
+    @Output()
+    cancelled = new EventEmitter();
 
-    set _item(value: Item){
+    set _item(value: Item) {
         if (value) this.originalName = value.name;
         this.selectedItem = Object.assign({}, value);
     }

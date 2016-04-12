@@ -1,6 +1,6 @@
-import {Component, ChangeDetectionStrategy} from 'angular2/core';
-import {Observable} from 'rxjs/Observable';
-import {Store} from '@ngrx/store';
+import {Component, ChangeDetectionStrategy} from "angular2/core";
+import {Observable} from "rxjs/Observable";
+import {Store} from "@ngrx/store";
 import {Item} from "./interfaces/ItemInterface";
 import {ItemsService} from "./services/ItemService";
 import {ItemDetail} from "./itemDetail/ItemDetail";
@@ -15,10 +15,10 @@ import {AppStore} from "./interfaces/AppStoreInterface";
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class App {
-    items:Observable<Array<Item>>;
-    selectedItem:Observable<Item>;
+    items: Observable<Array<Item>>;
+    selectedItem: Observable<Item>;
 
-    constructor(private itemsService:ItemsService, private store:Store<AppStore>) {
+    constructor(private itemsService: ItemsService, private store: Store<AppStore>) {
         this.items = itemsService.items;
         this.selectedItem = store.select('selectedItem');
         this.selectedItem.subscribe(v => console.log(v));
@@ -27,15 +27,15 @@ export class App {
     }
 
     resetItem() {
-        let emptyItem:Item = {id: null, name: '', description: ''};
+        let emptyItem: Item = {id: null, name: '', description: ''};
         this.store.dispatch({type: 'SELECT_ITEM', payload: emptyItem});
     }
 
-    selectItem(item:Item) {
+    selectItem(item: Item) {
         this.store.dispatch({type: 'SELECT_ITEM', payload: item});
     }
 
-    saveItem(item:Item) {
+    saveItem(item: Item) {
         this.itemsService.saveItem(item);
 
         // Generally, we would want to wait for the result of `itemsService.saveItem`
@@ -43,7 +43,7 @@ export class App {
         this.resetItem();
     }
 
-    deleteItem(item:Item) {
+    deleteItem(item: Item) {
         this.itemsService.deleteItem(item);
 
         // Generally, we would want to wait for the result of `itemsService.deleteItem`

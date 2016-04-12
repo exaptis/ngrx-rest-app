@@ -1,14 +1,9 @@
 {
   "items": [
     {
-      "id": 1,
-      "name": "asdf",
-      "description": "asdf"
-    },
-    {
       "id": 2,
-      "name": "rainer",
-      "description": "zufall"
+      "name": "a",
+      "description": "vv"
     }
   ]
 }
