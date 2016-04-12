@@ -11,7 +11,11 @@
     "node_modules"
   ],
   "filesGlob": [
-    "client/src/**/*.ts"
+    "client/**/*.ts"
+  ],
+  "files": [
+    "client/custom-typings.d.ts",
+    "typings/browser.d.ts"
   ],
   "compileOnSave": false,
   "atom": {

@@ -25,5 +25,5 @@ __build__/**
 
 # IDE #
 .idea/
-*.iml/
+*.iml
 *.swp

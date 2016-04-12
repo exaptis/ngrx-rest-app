@@ -3,8 +3,22 @@
  */
 var path = require('path');
 var webpack = require('webpack');
+var webpackMerge = require('webpack-merge'); //Used to merge webpack configs
+var helpers = require('./config/helpers');
+
 // Webpack Plugins
+var DefinePlugin = require('webpack/lib/DefinePlugin');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 var CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin;
+
+const ENV = process.env.ENV = process.env.NODE_ENV = 'development';
+const HMR = helpers.hasProcessFlag('hot');
+const METADATA = {
+  host: 'localhost',
+  port: 3001,
+  ENV: ENV,
+  HMR: HMR
+};
 
 /*
  * Config
@@ -15,6 +29,7 @@ module.exports = {
   debug: true,
 
   entry: {
+    'polyfills': './client/polyfills.ts',
     'vendor': './client/vendor.ts',
     'app': './client/bootstrap.ts' // our angular app
   },
@@ -63,8 +78,25 @@ module.exports = {
   },
 
   plugins: [
-    new CommonsChunkPlugin({name: 'vendor', filename: 'vendor.js', minChunks: Infinity}),
-    new CommonsChunkPlugin({name: 'common', filename: 'common.js', minChunks: 2, chunks: ['app', 'vendor']})
+    new DefinePlugin({
+      'ENV': JSON.stringify(METADATA.ENV),
+      'HMR': METADATA.HMR,
+      'process.env': {
+        'ENV': JSON.stringify(METADATA.ENV),
+        'NODE_ENV': JSON.stringify(METADATA.ENV),
+        'HMR': METADATA.HMR,
+      }
+    }),
+
+    new CommonsChunkPlugin({
+      name: helpers.reverse(['polyfills', 'vendor', 'main']),
+      minChunks: Infinity
+    }),
+
+    new HtmlWebpackPlugin({
+      template: 'client/public/index.html',
+      chunksSortMode: helpers.packageSort(['polyfills', 'vendor', 'main'])
+    })
   ],
 
   // Other module loader config
@@ -74,9 +106,15 @@ module.exports = {
   },
   // our Webpack Development Server config
   devServer: {
+    port: METADATA.port,
+    host: METADATA.host,
     historyApiFallback: true,
     contentBase: 'client/public',
-    publicPath: '/__build__'
+    publicPath: '/__build__',
+    watchOptions: {
+      aggregateTimeout: 300,
+      poll: 1000
+    }
   }
 
 };
