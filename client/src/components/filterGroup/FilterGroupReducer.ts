@@ -1,10 +1,19 @@
-import {FilterGroupTypes} from "./FilterGroupActions";
+import {FilterGroupTypes, IFilterGroupAction} from "./FilterGroupActions";
+import {IFacetModel} from "../../models/FacetModel";
+import {List} from "immutable";
 
-export default (state = [], action: any = {}) => {
+class FilterGroupState {
+    isToggled: boolean = false;
+    items: List<IFacetModel> = List<IFacetModel>();
+}
+
+export default (state: FilterGroupState, action: IFilterGroupAction) => {
     switch (action.type) {
         case FilterGroupTypes.TOGGLE_FILTER_GROUP:
-            return {isToggled: action.isToggled};
+            return Object.assign({}, state, {isToggled: action.isToggled});
+        case FilterGroupTypes.FILTER_FACETS:
+            return Object.assign({}, state, {items: action.items});
         default:
-            return state;
+            return new FilterGroupState;
     }
 };

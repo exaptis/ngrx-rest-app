@@ -2,6 +2,7 @@
     <filter-group
             [items]="items"
             [isSearchCollapsed]="isToggled"
-            (onToggle)="toggleFilterGroup($event)">
+            (onToggle)="toggleFilterGroup($event)"
+            (onSearch)="doFilterFactes($event)">
     </filter-group>
 </div>

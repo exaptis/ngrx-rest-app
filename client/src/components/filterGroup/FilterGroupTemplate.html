@@ -1,5 +1,9 @@
-<input [placeholder]="placeholder"/>
-<button (click)="handleToggleClick(event)">Toggle</button>
-<ul [hidden]="!isSearchCollapsed">
-    <li *ngFor="#item of items">{{item}}</li>
+List
+<button (click)="handleToggleClick(event)">Toggle</button><br/>
+<input #searchTerm type="text"
+       [hidden]="!isSearchCollapsed"
+       [placeholder]="placeholder"
+       (change)="handleOnSearch(searchTerm.value)"/>
+<ul>
+    <li *ngFor="#item of items">{{item.getReadableText()}}</li>
 </ul>

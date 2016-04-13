@@ -1,5 +1,10 @@
 import {Component, ChangeDetectionStrategy, Input, Output, EventEmitter} from "angular2/core";
 import {List} from "immutable";
+import "rxjs/add/operator/map";
+import "rxjs/add/operator/debounceTime";
+import "rxjs/add/operator/distinctUntilChanged";
+import "rxjs/add/operator/switchMap";
+import FacetModel from "../../models/FacetModel";
 
 @Component({
     selector: 'filter-group',
@@ -9,18 +14,29 @@ import {List} from "immutable";
 export class FilterGroupComponent {
     @Input() placeholder: string;
     @Input() isSearchCollapsed: boolean;
-    @Input() items: List;
+    @Input() items: List<FacetModel>;
 
     @Output() onToggle: EventEmitter<boolean> = new EventEmitter();
-    @Output() onSearch: EventEmitter<any> = new EventEmitter();
+    @Output() onSearch: EventEmitter<string> = new EventEmitter();
 
-    private searchTerm: string = '';
+    // private searchTerm: Control = new Control();
+
+    constructor() {
+        // this.searchTerm
+        //     .valueChanges
+        //     .debounceTime(400)
+        //     .distinctUntilChanged()
+        //     .switchMap(searchTerm => {
+        //         console.log(searchTerm);
+        //        
+        //     });
+    }
+
+    handleOnSearch(searchTerm: string) {
+        this.onSearch.emit(searchTerm)
+    }
 
     handleToggleClick() {
         this.onToggle.emit(this.isSearchCollapsed);
-    }
-
-    handleSearchTermChange() {
-        this.onSearch.emit({term: this.searchTerm});
     }
 }
