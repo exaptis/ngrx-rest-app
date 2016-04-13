@@ -1,11 +1,7 @@
 <div class="mdl-cell mdl-cell--6-col">
-    <items-list [items]="items | async"
-                (selected)="selectItem($event)" (deleted)="deleteItem($event)">
-    </items-list>
-</div>
-<div class="mdl-cell mdl-cell--6-col">
-    <item-detail
-            (saved)="saveItem($event)" (cancelled)="resetItem($event)"
-            [item]="selectedItem | async">Select an Item
-    </item-detail>
+    <filter-group
+            [items]="items"
+            [isSearchCollapsed]="isToggled"
+            (onToggle)="toggleFilterGroup($event)">
+    </filter-group>
 </div>

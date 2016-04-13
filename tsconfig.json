@@ -2,20 +2,20 @@
   "compilerOptions": {
     "target": "ES5",
     "module": "commonjs",
-    "removeComments": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "sourceMap": true
   },
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "typings/main.d.ts",
+    "typings/main"
   ],
   "filesGlob": [
-    "client/**/*.ts"
-  ],
-  "files": [
+    "./client/**/*.ts",
     "client/custom-typings.d.ts",
-    "typings/browser.d.ts"
+    "typings/browser.d.ts",
+    "node_modules/immutable/dist/immutable.d.ts"
   ],
   "compileOnSave": false,
   "atom": {

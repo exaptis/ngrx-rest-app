@@ -62,7 +62,7 @@ module.exports = {
             2375  // 2375 -> Duplicate string index signature
           ]
         },
-        exclude: [/\.spec\.ts$/, /node_modules/]
+        exclude: [/\.spec\.ts$/]
       },
 
       // Support for *.json files.

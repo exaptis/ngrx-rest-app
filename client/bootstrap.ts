@@ -1,14 +1,22 @@
 //main entry point
 import {bootstrap} from "angular2/platform/browser";
 import {App} from "./src/app";
-import {provideStore} from "@ngrx/store";
 import {HTTP_PROVIDERS} from "angular2/http";
-import {ItemsService} from "./src/services/ItemService";
-import {items} from "./src/stores/ItemsStore";
-import {selectedItem} from "./src/stores/SelectedItemStore";
+import {createAppStoreFactoryWithOptions, AppStore} from "angular2-redux/dist/index";
+import {provide} from "angular2/core";
+import filterGroupreducer from "./src/components/filterGroup/FilterGroupReducer";
+import {FilterGroupActions} from "./src/components/filterGroup/FilterGroupActions";
 
-bootstrap(App, [
-    ItemsService,
-    HTTP_PROVIDERS,
-    provideStore({items, selectedItem})
-]).catch(err => console.error(err));
+
+const appStoreFactory = createAppStoreFactoryWithOptions({
+    reducers: {filterGroupreducer},
+    debug: true
+});
+
+bootstrap(App,
+    [
+        provide(AppStore, {useFactory: appStoreFactory}),
+        HTTP_PROVIDERS,
+        FilterGroupActions
+    ]
+).catch(err => console.error(err));

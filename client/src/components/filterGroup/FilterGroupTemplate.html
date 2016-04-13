@@ -1,0 +1,5 @@
+<input [placeholder]="placeholder"/>
+<button (click)="handleToggleClick(event)">Toggle</button>
+<ul [hidden]="!isSearchCollapsed">
+    <li *ngFor="#item of items">{{item}}</li>
+</ul>
