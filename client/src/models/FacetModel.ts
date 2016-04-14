@@ -13,6 +13,6 @@ export default class FacetModel implements IFacetModel {
     }
 
     getReadableText(): string {
-        return `${this.id} - ${this.name}`
+        return `${this.id} - ${this.name}`;
     }
 }

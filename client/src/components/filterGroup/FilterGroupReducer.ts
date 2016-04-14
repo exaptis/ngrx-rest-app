@@ -1,10 +1,9 @@
 import {FilterGroupTypes, IFilterGroupAction} from "./FilterGroupActions";
 import {IFacetModel} from "../../models/FacetModel";
-import {List} from "immutable";
 
 class FilterGroupState {
     isToggled: boolean = false;
-    items: List<IFacetModel> = List<IFacetModel>();
+    items: Array<IFacetModel> = Array<IFacetModel>();
 }
 
 export default (state: FilterGroupState, action: IFilterGroupAction) => {

@@ -15,5 +15,4 @@ export class FacetService {
             .get('http://en.wikipedia.org/w/api.php?callback=JSONP_CALLBACK', {search})
             .map((response) => response.json()[1]);
     }
-
 }

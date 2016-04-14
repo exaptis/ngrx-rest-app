@@ -14,8 +14,7 @@
   "filesGlob": [
     "./client/**/*.ts",
     "client/custom-typings.d.ts",
-    "typings/browser.d.ts",
-    "node_modules/immutable/dist/immutable.d.ts"
+    "typings/browser.d.ts"
   ],
   "compileOnSave": false,
   "atom": {

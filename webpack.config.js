@@ -59,7 +59,10 @@ module.exports = {
             2403, // 2403 -> Subsequent variable declarations
             2300, // 2300 Duplicate identifier
             2374, // 2374 -> Duplicate number index signature
-            2375  // 2375 -> Duplicate string index signature
+            2375,  // 2375 -> Duplicate string index signature
+            // TEMPORERAL ANGULAR2-REDUX FIX
+            2322, // type 'Thunk' is not assignable to type 'typeof "redux-thunk"'.
+            2345, // Argument of type 'typeof "redux-thunk"' is not assignable to parameter of type
           ]
         },
         exclude: [/\.spec\.ts$/]

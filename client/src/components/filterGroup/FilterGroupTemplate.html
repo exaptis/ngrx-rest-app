@@ -1,9 +1,10 @@
 List
 <button (click)="handleToggleClick(event)">Toggle</button><br/>
-<input #searchTerm type="text"
+<input type="text"
        [hidden]="!isSearchCollapsed"
        [placeholder]="placeholder"
-       (change)="handleOnSearch(searchTerm.value)"/>
+       [ngFormControl]="searchTerm"
+/>
 <ul>
     <li *ngFor="#item of items">{{item.getReadableText()}}</li>
 </ul>
